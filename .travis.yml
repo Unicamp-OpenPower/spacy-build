@@ -8,12 +8,12 @@ python:
 os:
   - linux-ppc64le
 install:
+  - git clone https://github.com/explosion/spaCy.git
+  - cd spaCy
   - "pip install -r requirements.txt"
   - "python setup.py build_ext --inplace"
   - "pip install -e ."
 script:
-  - git clone https://github.com/explosion/spaCy.git
-  - cd spaCy
   - "cat /proc/cpuinfo | grep flags | head -n 1"
   - "pip install pytest pytest-timeout"
   - "python -m pytest --tb=native spacy"
